@@ -11,7 +11,9 @@ public class MakeStickyManager : Singleton<MakeStickyManager>
     public DictationRecognizer m_DictationRecognizer;
     public GameObject HoloSticky;
     public GameObject FukidashiUI;
+    public Transform MyStickyHolder;
     private List<GameObject> stickyList = new List<GameObject>();
+    public bool canInput = false;
 
     // Use this for initialization
     void Start () {
@@ -19,20 +21,24 @@ public class MakeStickyManager : Singleton<MakeStickyManager>
         m_DictationRecognizer.InitialSilenceTimeoutSeconds = 30f;
         m_DictationRecognizer.DictationResult += (text, confidence) =>
         {
+            if (canInput)
+            {
+                MakeSticky(text);
+            }
             
-            MakeSticky(text);
         };
-        m_DictationRecognizer.Start();
+        
     }
 
     public void MakeSticky(string text)
     {
         GameObject Sticky = GameObject.Instantiate(HoloSticky);
-        Sticky.transform.transform.Find("Text").GetComponent<Text>().text = text;
+        Sticky.transform.transform.Find("Image").transform.transform.Find("Text").GetComponent<Text>().text = text;
         stickyList.Add(Sticky);
-        Sticky.transform.parent = FukidashiUI.transform;
-        Sticky.transform.localPosition = new Vector3(0f, -8f - stickyList.Count * 10, 0f);
-        Sticky.transform.localScale = new Vector3(0.148f, 0.148f, 0.148f);
+        Sticky.transform.position = Camera.main.transform.TransformPoint(new Vector3(0f, 0f, 1f));
+        Sticky.transform.rotation = Quaternion.LookRotation(Sticky.transform.position - Camera.main.transform.position);
+        Sticky.transform.parent = MyStickyHolder;
+        //Sticky.transform.localScale = new Vector3(0.148f, 0.148f, 0.148f);
 
 
     }
