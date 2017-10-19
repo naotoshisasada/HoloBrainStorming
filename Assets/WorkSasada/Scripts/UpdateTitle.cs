@@ -27,6 +27,6 @@ public class UpdateTitle : MonoBehaviour {
     public void updateDiscussionTitle(string text)
     {
 
-        this.GetCompoent< MeshText >() = text; 
+        this.GetComponent<TextMesh>().text = text; 
     }
 }

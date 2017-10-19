@@ -507,11 +507,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: HoloBrainStorming
   metroPackageVersion: 
-  metroCertificatePath: 
+  metroCertificatePath: C:\Users\rtakasugi\HoloBrainStorming\Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: DefaultCompany
+  metroCertificateIssuer: DefaultCompany
+  metroCertificateNotAfter: 804f272f1e68d401
   metroApplicationDescription: HoloBrainStorming
   wsaImages: {}
   metroTileShortName: 

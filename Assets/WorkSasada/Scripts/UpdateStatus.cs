@@ -35,11 +35,11 @@ public class UpdateStatus : MonoBehaviour {
         {
             stat.chngMsg(2);
         }
-        else if (text.Equals("share idea"))
+        else if (text.Equals("think idea"))
         {
             stat.chngMsg(3);
         }
-        else if (text.Equals("finish session"))
+        else if (text.Equals("share idea"))
         {
             stat.chngMsg(4);
         }
