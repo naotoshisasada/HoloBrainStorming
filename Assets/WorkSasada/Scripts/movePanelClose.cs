@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class movePanelClose : MonoBehaviour
+public class MovePanelClose : MonoBehaviour
 {
 
     // Use this for initialization
@@ -43,7 +43,4 @@ public class movePanelClose : MonoBehaviour
             // movePanel.transform.position = movePanel.transform.position + (toPosition - fromPosition) * moveSpeed;
         }
     }
-
-
-
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class connectPanel : MonoBehaviour {
+public class ConnectPanel : MonoBehaviour {
 
     public GameObject objLine;
 

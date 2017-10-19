@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class rotateStatus : MonoBehaviour
+public class RotateStatus : MonoBehaviour
 {
     //　カウンタ
     float cnt = 0.0f;
@@ -24,43 +24,48 @@ public class rotateStatus : MonoBehaviour
         rotateStatMsg(tmpRadius, tmpCentorPos);
 
         if (cnt % 120 == 0) {
-            rotateChngMsg((int)((cnt % 30) % 4)+1);
+            chngMsg((int)((cnt % 30) % 4)+1);
         }
 
 
     }
 
+    // 引数を元に、会議のステータスを示すメッセージを自転と公転させる
     void rotateStatMsg(float radius, Vector3 centerPosition)
     {
+        // 1. 公転半径の設定
+        // 2. 公転の中心座標
+
         cnt += 1.0f;
         // 速度（値が大きいほど高速）
-        float speed = 0.5f;
+        float speed = 0.25f;
         this.transform.Rotate(new Vector3(0.0f, speed * 360.0f / 60.0f , 0.0f));
         this.transform.position = radius * new Vector3(-1.0f * Mathf.Sin(speed * 2.0f * Mathf.PI * cnt / 60.0f), 0, -1.0f * Mathf.Cos(speed * 2.0f * Mathf.PI * cnt / 60.0f)) + centerPosition;
     }
 
-    void rotateChngMsg(int statNum)
+    // 引数を元に、会議のステータスを示すメッセージを変更する
+    public void chngMsg(int statNum)
     {
-        // 引数を元に、メッセージを変更する
+        // 1. ステータスのID
 
         if (statNum == 1)
         {
-            this.GetComponent<TextMesh>().text = "JOIN";
+            this.GetComponent<TextMesh>().text = "Start";
         }
         else if (statNum == 2)
         {
-            this.GetComponent<TextMesh>().text = "Thinking Time";
+            this.GetComponent<TextMesh>().text = "Join";
         }
         else if (statNum == 3)
         {
-            this.GetComponent<TextMesh>().text = "Discussion";
+            this.GetComponent<TextMesh>().text = "Share";
         }
         else if (statNum == 4)
         {
-            this.GetComponent<TextMesh>().text = "Closing";
+            this.GetComponent<TextMesh>().text = "Finish";
         }
         else {
-            this.GetComponent<TextMesh>().text = "Waiting for Facilitators";
+            this.GetComponent<TextMesh>().text = "Not Started";
         }
         
     }

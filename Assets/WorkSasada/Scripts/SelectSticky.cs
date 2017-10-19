@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class selectPanel : MonoBehaviour {
+public class SelectSticky : MonoBehaviour {
 
     int cnt = 0;
     float rate = 1.5f;
 
     // Use this for initialization
     void Start () {
-		
 	}
 	
 	// Update is called once per frame
@@ -18,30 +17,32 @@ public class selectPanel : MonoBehaviour {
 
         if (cnt % 60 == 30)
         {
-            selectPanelOn(rate);
+            selectStickyOn(rate);
         }
         else if (cnt % 60 == 0)
         {
-            selectPanelOff(rate);
+            selectStickyOff(rate);
         }
     }
 
-    // Update is called once per frame
-    void selectPanelOn(float expandRate)
+    //選択された付箋を強調（拡大・透過）する
+    void selectStickyOn(float expandRate)
     {
-        // expandrate
+        // 1. expandRate（拡大率）
 
         this.transform.localScale = this.transform.localScale * expandRate;
         MeshRenderer meshrender = this.GetComponent<MeshRenderer>();
-        this.GetComponent<MeshRenderer>().material.color = new Color(meshrender.material.color.r, meshrender.material.color.g, meshrender.material.color.b, 0.0f);
- //     Debug.Log(meshrender.material.color.ToString());
+        this.GetComponent<MeshRenderer>().material.color = new Color(meshrender.material.color.r, meshrender.material.color.g, meshrender.material.color.b, 0.5f);
+        //     Debug.Log(meshrender.material.color.ToString());
     }
 
-    void selectPanelOff(float expandRate)
+    //選択された付箋の強調を解除（縮小拡大・非透過）する
+    void selectStickyOff(float expandRate)
     {
+        // 1. expandRate（拡大率）
+
         this.transform.localScale = this.transform.localScale / expandRate;
         MeshRenderer meshrender = this.GetComponent<MeshRenderer>();
         this.GetComponent<MeshRenderer>().material.color = new Color(meshrender.material.color.r, meshrender.material.color.g, meshrender.material.color.b, 1.0f);
-        meshrender.material.color = new Color(meshrender.material.color.r, meshrender.material.color.g, meshrender.material.color.b, 1.0f);
     }
 }
